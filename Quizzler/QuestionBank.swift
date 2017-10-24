@@ -2,6 +2,7 @@ import Foundation
 
 class QuestionBank {
     var list = [Question]() // create array of type Question
+    var listCount : Int
     init() { // don't need to pass parameters
         // Creating a quiz item and appending it to the list
         let item = Question(text: "Valentine\'s day is banned in Saudi Arabia.", correctAnswer: true)
@@ -20,6 +21,7 @@ class QuestionBank {
         list.append(Question(text: "The loudest sound produced by any animal is 188 decibels. That animal is the African Elephant.", correctAnswer: false))
         list.append(Question(text: "No piece of square dry paper can be folded in half more than 7 times.", correctAnswer: false))
         list.append(Question(text: "Chocolate affects a dog\'s heart and nervous system; a few ounces are enough to kill a small dog.", correctAnswer: true))
+        listCount = list.count
     }
 }
 
