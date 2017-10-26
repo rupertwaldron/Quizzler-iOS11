@@ -1,11 +1,9 @@
 import UIKit
-
 class ViewController: UIViewController {
     let allQuestions = QuestionBank()
     var pickedAnswer : Bool = false
     var questionNumber : Int = 0
     var score : Int = 0
-    
     
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
@@ -16,8 +14,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         updateUI()
     }
-
-
+    
     @IBAction func answerPressed(_ sender: AnyObject) {
         if sender.tag == 1 {
             pickedAnswer = true
@@ -29,9 +26,9 @@ class ViewController: UIViewController {
             startOver()
             return
         }
-            checkAnswer()
-            nextQuestion()
-
+        checkAnswer()
+        nextQuestion()
+        
     }
     
     func updateUI() {
@@ -41,22 +38,24 @@ class ViewController: UIViewController {
         // sets width to the width of the screen / number of questions
         progressBar.frame.size.width = CGFloat((Int(view.frame.size.width) / allQuestions.listCount) * (questionNumber + 1))
     }
-
+    
     func nextQuestion() {
         questionNumber += 1
         if questionNumber < allQuestions.listCount {
             updateUI()
         }
         else {
-            let alert = UIAlertController(title: "Finished!", message: "Do you want to start over?", preferredStyle: .alert)
-            let restartAction = UIAlertAction(title: "Restart", style: .default, handler: { (restartAction) in
-                self.startOver() // if have "in" need "self"
+            let alert = UIAlertController(title: "Finished!",
+                                          message: "Do you want to start over?",
+                                          preferredStyle: .alert)
+            let restartAction = UIAlertAction(title: "Restart",
+                                              style: .default, handler: { (restartAction) in
+                                                self.startOver() // if have "in" need "self"
             })
             alert.addAction(restartAction)
             present(alert, animated: true, completion: nil)
         }
     }
-    
     
     func checkAnswer() {
         let correctAnswer = allQuestions.list[questionNumber].answer
@@ -74,9 +73,5 @@ class ViewController: UIViewController {
         questionNumber = 0
         score = 0
         updateUI()
-
     }
-    
-
-    
 }

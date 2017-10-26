@@ -10,5 +10,3 @@ class Question {
     }
 }
 
-let bob : Question = Question(text: "who?", correctAnswer: true)
-let fred = Question(text: "am?", correctAnswer: false)
